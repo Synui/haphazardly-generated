@@ -6,11 +6,11 @@ var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var specialSym = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "~", "]", "^", "_", "`", "{", "|", "}"];
 
-// Options that the user can choose from aswell as the allowed character length parameter
+// Options that the user can choose from as well as the allowed character length parameter
 function passwordConditions() {
   var cogent = false;
   do {
-    var length = prompt("Choose the length of the password between 8 and 128 characters");
+    var length = prompt("Choose the length of the password between 8 and 128 characters.");
     var confirmLower = confirm("Would you like to add lowercase letters?");
     var confirmUpper = confirm("Would you like to add uppercase letters?");
     var confirmNumbers = confirm("Would you like to add numbers?");
@@ -53,15 +53,14 @@ function generatePassword() {
     for (var i of specialSym)
       passwordMeld.push(i);
   }
-  // console.log(passwordMeld);
 
+  // Array that creates the randomness of characters based off of length defined by user
   for (var i = 0; i < passwordCreate.length; i++) {
     passwordResult += passwordMeld[Math.floor(Math.random() * passwordMeld.length)];
   }
-  // console.log(passwordResult);
 
   return passwordResult;
-}
+};
 
 // Write password to the #password input
 function writePassword() {
@@ -70,7 +69,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
