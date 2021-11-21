@@ -1,9 +1,9 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 // Array of password options
-var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
+var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
 var specialSym = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "~", "]", "^", "_", "`", "{", "|", "}"];
 
 // Options that the user can choose from aswell as the allowed character length parameter
@@ -30,6 +30,38 @@ function passwordConditions() {
   } while(!cogent);
   return conditions;
 };
+
+// Creates the combinations based off of the passwordConditions function
+function generatePassword() {
+  var passwordCreate = passwordConditions();
+  var passwordMeld = [];
+  var passwordResult = "";
+
+  if (passwordCreate.confirmLower) {
+    for (var i of lowerLetters)
+      passwordMeld.push(i);
+  }
+  if (passwordCreate.confirmUpper) {
+    for (var i of upperLetters)
+      passwordMeld.push(i);
+  }
+  if (passwordCreate.confirmNumbers) {
+    for (var i of numbers)
+      passwordMeld.push(i);
+  }
+  if (passwordCreate.confirmSpecial) {
+    for (var i of specialSym)
+      passwordMeld.push(i);
+  }
+  // console.log(passwordMeld);
+
+  for (var i = 0; i < passwordCreate.length; i++) {
+    passwordResult += passwordMeld[Math.floor(Math.random() * passwordMeld.length)];
+  }
+  // console.log(passwordResult);
+
+  return passwordResult;
+}
 
 // Write password to the #password input
 function writePassword() {
