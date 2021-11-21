@@ -15,23 +15,21 @@ function passwordConditions() {
     var confirmUpper = confirm("Would you like to add uppercase letters?");
     var confirmNumbers = confirm("Would you like to add numbers?");
     var confirmSpecial = confirm("Would you like to add special characters, i.e. * $ @ etc...?");
-    var confirmations = {
+    var conditions = {
       length: length,
       confirmLower: confirmLower,
       confirmUpper: confirmUpper,
       confirmNumbers: confirmNumbers,
-      confirmSpecial: confirmSpecial,
+      confirmSpecial: confirmSpecial
     }
-    if ((length < 8) ||(length > 128))
-      alert("Choose a number between 8 and 128")
-    else if ((!confirmLower)&&(!confirmUpper)&&(confirmNumbers)&&(confirmSpecial))
+    if ((length < 8)||(length > 128))
+      alert("Choose a number between 8 and 128.")
+    else if ((!confirmLower)&&(!confirmUpper)&&(!confirmNumbers)&&(!confirmSpecial))
       alert("Must choose atleast one type of character!")
     else cogent = true;
-  } while(cogent);
-  return confirmations;
+  } while(!cogent);
+  return conditions;
 };
-
-
 
 // Write password to the #password input
 function writePassword() {
